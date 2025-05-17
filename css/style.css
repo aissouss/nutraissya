@@ -376,11 +376,11 @@ footer {
   .container {
     width: 95%;
   }
-  
+
   .footer-section {
     min-width: 160px;
   }
-  
+
   .boutique-cards {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
@@ -388,7 +388,7 @@ footer {
   nav ul {
     gap: 0.5rem;
   }
-  
+
   nav ul li a {
     padding: 0.75rem 0.8rem;
     font-size: 0.85rem;
@@ -420,11 +420,11 @@ footer {
     margin-top: 1rem;
     justify-content: center;
   }
-  
+
   nav ul li {
     text-align: center;
   }
-  
+
   nav ul li a {
     display: block;
     padding: 0.6rem 0.8rem;
@@ -442,7 +442,7 @@ footer {
   .hero p {
     font-size: 1rem;
   }
-  
+
   .section {
     padding: 2.5rem 1.5rem;
   }
@@ -451,16 +451,16 @@ footer {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .footer-section {
     text-align: center;
   }
-  
+
   .footer-section h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .contact-page {
     grid-template-columns: 1fr;
   }
@@ -468,7 +468,7 @@ footer {
   .logo img {
     height: 100px;
   }
-  
+
   img[src*="logo-nutraissya.png"] {
     width: 150px;
   }
@@ -478,16 +478,16 @@ footer {
   form {
     padding: 1.75rem 1.25rem;
   }
-  
+
   .hero .btn {
     width: 80%;
     max-width: 280px;
   }
-  
+
   .section-title h2 {
     font-size: 1.8rem;
   }
-  
+
   .boutique-cards {
     grid-template-columns: 1fr;
   }
@@ -695,7 +695,7 @@ footer {
 }
 
 /* Masquer l'emoji du panier et tous les éléments graphiques */
-.panier-icon::before, 
+.panier-icon::before,
 .panier-icon svg,
 .panier-icon img {
   display: none;
@@ -738,8 +738,8 @@ footer {
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.tab-content-profil { 
-  display: none; 
+.tab-content-profil {
+  display: none;
   max-width: 800px;
   margin: 0 auto 3rem auto;
   background: #fff;
@@ -748,14 +748,14 @@ footer {
   padding: 2.5rem;
 }
 
-.tab-content-profil.active { 
-  display: block; 
+.tab-content-profil.active {
+  display: block;
   animation: fadeIn 0.4s ease;
 }
 
-@keyframes fadeIn { 
-  from { opacity: 0; transform: translateY(5px); } 
-  to { opacity: 1; transform: translateY(0); } 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Formulaires modernes */
@@ -763,7 +763,7 @@ footer {
   margin-bottom: 1.25rem;
 }
 
-form input, 
+form input,
 form select {
   padding: 0.9rem 1rem;
   border-radius: 0.75rem;
@@ -1065,4 +1065,278 @@ footer .logo img {
 .table-panier button, .table-panier a.btn-panier {
   box-shadow: none;
   background: var(--deep-green);
+}
+
+/* Search and Filter Section */
+.search-filter-container {
+  margin-bottom: 2.5rem;
+  background: var(--off-white);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  max-width: 100%;
+}
+
+.search-input, .category-select {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d0d0d0;
+  flex: 1;
+  min-width: 180px;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.btn-filter {
+  background: var(--deep-green);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.btn-filter:hover {
+  background: var(--sage-green);
+  transform: translateY(-2px);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 36px;
+  padding: 0 0.8rem;
+  border-radius: 0.5rem;
+  background: #eaf6ea;
+  color: var(--deep-green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.page-link.active {
+  background: var(--deep-green);
+  color: #fff;
+}
+
+.page-link:hover:not(.active) {
+  background: var(--sage-green);
+  color: #fff;
+}
+
+/* Boutique Card Refinements */
+.boutique-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boutique-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.boutique-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+  color: var(--deep-green);
+  line-height: 1.3;
+}
+
+.boutique-card .categorie {
+  font-size: 0.85rem;
+  color: var(--sage-green);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: #f2f7f2;
+  border-radius: 1rem;
+}
+
+.boutique-card p {
+  margin-bottom: 1.2rem;
+  color: #333;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.boutique-card .prix {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--deep-green);
+  margin: 0.7rem 0;
+}
+
+.en-savoir-plus {
+  align-self: flex-start;
+  margin-top: auto;
+  font-weight: 500;
+  color: var(--deep-green);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.en-savoir-plus:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+.boutique-actions {
+  padding: 1.2rem;
+  border-top: 1px solid #eee;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.panier-form {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background: none;
+  border: none;
+}
+
+.boutique-actions .quantity {
+  margin-bottom: 0.8rem;
+}
+
+.boutique-actions .quantity input {
+  width: 70px;
+  padding: 0.7rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+}
+
+.boutique-actions button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.boutique-actions button[name="add_panier"] {
+  background: var(--deep-green);
+  color: white;
+}
+
+.boutique-actions button[name="add_favori"] {
+  background: var(--orange-btn);
+  color: white;
+}
+
+.boutique-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.boutique-actions button[name="add_panier"]:hover {
+  background: #1d2e22;
+}
+
+.boutique-actions button[name="add_favori"]:hover {
+  background: #d35400;
+}
+
+.favoris-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.favoris-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: 250px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.favoris-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(44, 74, 61, 0.1);
+}
+
+.favoris-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.favoris-card h2 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  color: var(--deep-green);
+}
+
+.favoris-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.75rem;
+}
+
+.favoris-card .prix {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--deep-green);
+  margin: 0.75rem 0;
+}
+
+.favoris-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.favoris-actions button,
+.favoris-actions a {
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+}
+
+.favoris-card .retour-boutique {
+  margin-top: 1.5rem;
+  text-align: center;
 }

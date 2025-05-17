@@ -43,60 +43,71 @@ $categories = [
 ];
 ?>
 <main class="section">
-<h1>Boutique NUTR'AISSYA</h1>
-<form method="get" style="margin-bottom:20px;display:flex;gap:10px;align-items:center;">
-    <input type="text" name="search" placeholder="Rechercher..." value="<?= htmlspecialchars($search) ?>" style="padding:6px;">
-    <select name="categorie" style="padding:6px;">
-        <?php foreach ($categories as $key => $label): ?>
-            <option value="<?= $key ?>" <?= ($categorie === $key) ? 'selected' : '' ?>><?= $label ?></option>
-        <?php endforeach; ?>
-    </select>
-    <button type="submit" style="padding:6px 16px;">Filtrer</button>
-</form>
+    <h1 class="boutique-title">Boutique NUTR'AISSYA</h1>
 
-<?php if (!$articles): ?>
-    <div class="alert alert-info">Aucun produit trouvé.</div>
-<?php else: ?>
-<div class="boutique-cards">
-<?php foreach($articles as $row): ?>
-  <div class="boutique-card">
-    <?php $img = !empty($row['image']) ? htmlspecialchars($row['image']) : 'default.jpg'; ?>
-    <img src="<?= $root_path ?>medias/<?= $img ?>" alt="<?= isset($row['titre']) ? htmlspecialchars($row['titre']) : '' ?>">
-    <h2><?= isset($row['titre']) ? htmlspecialchars($row['titre']) : 'Sans titre' ?></h2>
-    <?php if (!empty($row['categorie'])): ?>
-      <div class="categorie">Catégorie : <?= htmlspecialchars($row['categorie']) ?></div>
-    <?php endif; ?>
-    <p><?= isset($row['description']) ? htmlspecialchars($row['description']) : '' ?></p>
-    <div class="prix"><?= isset($row['prix']) ? number_format($row['prix'], 2, ',', ' ') : '--' ?> €</div>
-    <div class="actions">
-      <form method="post" action="panier.php">
-        <input type="hidden" name="id" value="<?= $row['id'] ?>">
-        <input type="number" name="quantite" min="1" value="1" style="width:60px;">
-        <button type="submit" name="add_panier">Ajouter au panier</button>
-      </form>
-      <form method="post" action="mes-favoris.php">
-        <input type="hidden" name="id" value="<?= $row['id'] ?>">
-        <?php if (!isset($_SESSION['user_id'])): ?>
-          <button type="button" onclick="window.location.href='login.php?error=connectez-vous'">Favori</button>
-        <?php else: ?>
-          <button type="submit" name="add_favori">Favori</button>
-        <?php endif; ?>
-      </form>
+    <div class="search-filter-container">
+        <form method="get" class="search-form">
+            <input type="text" name="search" placeholder="Rechercher..." value="<?= htmlspecialchars($search) ?>" class="search-input">
+            <select name="categorie" class="category-select">
+                <?php foreach ($categories as $key => $label): ?>
+                    <option value="<?= $key ?>" <?= ($categorie === $key) ? 'selected' : '' ?>><?= $label ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn-filter">Filtrer</button>
+        </form>
     </div>
-    <a href="details-produit.php?id=<?= $row['id'] ?>" class="en-savoir-plus">En savoir plus</a>
-  </div>
-<?php endforeach; ?>
-</div>
-<?php endif; ?>
 
-<?php if ($nbPages > 1): ?>
-<div style="margin-top:30px;text-align:center;">
-    <?php for ($i = 1; $i <= $nbPages; $i++): ?>
-        <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>" style="display:inline-block;margin:0 4px;padding:6px 14px;border-radius:6px;background:<?= ($i == $page) ? '#3a5d3a' : '#eaf6ea' ?>;color:<?= ($i == $page) ? '#fff' : '#3a5d3a' ?>;text-decoration:none;">
-            <?= $i ?>
-        </a>
-    <?php endfor; ?>
-</div>
-<?php endif; ?>
+    <?php if (!$articles): ?>
+        <div class="alert alert-info">Aucun produit trouvé.</div>
+    <?php else: ?>
+    <div class="boutique-cards">
+        <?php foreach($articles as $row): ?>
+        <div class="boutique-card">
+            <?php $img = !empty($row['image']) ? htmlspecialchars($row['image']) : 'default.jpg'; ?>
+            <img src="<?= $root_path ?>medias/<?= $img ?>" alt="<?= isset($row['titre']) ? htmlspecialchars($row['titre']) : '' ?>">
+
+            <div class="boutique-card-content">
+                <h2><?= isset($row['titre']) ? htmlspecialchars($row['titre']) : 'Sans titre' ?></h2>
+                <?php if (!empty($row['categorie'])): ?>
+                <div class="categorie">Catégorie : <?= htmlspecialchars($row['categorie']) ?></div>
+                <?php endif; ?>
+                <p><?= isset($row['description']) ? htmlspecialchars($row['description']) : '' ?></p>
+                <div class="prix"><?= isset($row['prix']) ? number_format($row['prix'], 2, ',', ' ') : '--' ?> €</div>
+                <a href="details-produit.php?id=<?= $row['id'] ?>" class="en-savoir-plus">En savoir plus</a>
+            </div>
+
+            <div class="boutique-actions">
+                <form method="post" action="panier.php" class="panier-form">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    <div class="quantity">
+                        <input type="number" name="quantite" min="1" value="1">
+                    </div>
+                    <button type="submit" name="add_panier">Ajouter au panier</button>
+                </form>
+                <form method="post" action="mes-favoris.php">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    <?php if (!isset($_SESSION['user_id'])): ?>
+                        <button type="button" name="add_favori" onclick="window.location.href='login.php?error=connectez-vous'">Ajouter aux favoris</button>
+                    <?php else: ?>
+                        <button type="submit" name="add_favori">Ajouter aux favoris</button>
+                    <?php endif; ?>
+                </form>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($nbPages > 1): ?>
+    <div class="pagination">
+        <?php for ($i = 1; $i <= $nbPages; $i++): ?>
+            <a href="?<?= http_build_query(array_merge($_GET, ['page' => $i])) ?>"
+               class="page-link <?= ($i == $page) ? 'active' : '' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+    </div>
+    <?php endif; ?>
 </main>
 <?php include '../includes/footer.php'; ?>
+
